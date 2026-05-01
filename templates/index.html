@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Wumpus Inference Engine - AI Agent</title>
+    <link rel="stylesheet" href="/static/style.css" />
+  </head>
+  <body>
+    <div class="background-overlay"></div>
+
+    <main class="main-container">
+      <header class="header-section">
+        <div class="header-content">
+          <h1>Wumpus Inference Engine</h1>
+          <p>Autonomous Pathfinding via Propositional Logic & Resolution</p>
+        </div>
+      </header>
+
+      <div class="content-wrapper">
+        <aside class="sidebar">
+          <section class="panel controls-panel">
+            <h3>Environment Setup</h3>
+            <div class="input-group">
+              <div class="input-field">
+                <label for="rowsInput">Rows</label>
+                <input id="rowsInput" type="number" min="2" max="10" value="4" />
+              </div>
+              <div class="input-field">
+                <label for="colsInput">Columns</label>
+                <input id="colsInput" type="number" min="2" max="10" value="4" />
+              </div>
+              <div class="input-field">
+                <label for="pitProbInput">Hazard Risk</label>
+                <input id="pitProbInput" type="number" min="0.05" max="0.45" step="0.05" value="0.2" />
+              </div>
+            </div>
+            <div class="action-buttons">
+              <button id="newEpisodeBtn" class="btn primary-btn">Initialize World</button>
+              <button id="autoStepBtn" class="btn secondary-btn">Execute Safe Step</button>
+            </div>
+          </section>
+
+          <section class="panel dashboard-panel">
+            <h3>Live Telemetry</h3>
+            <div class="stats-grid">
+              <div class="stat-box">
+                <span class="stat-title">Inference Steps</span>
+                <span id="inferenceSteps" class="stat-value">0</span>
+              </div>
+              <div class="stat-box">
+                <span class="stat-title">Active Percepts</span>
+                <span id="currentPercepts" class="stat-value">None</span>
+              </div>
+              <div class="stat-box">
+                <span class="stat-title">Agent Coordinates</span>
+                <span id="agentPosition" class="stat-value">(0,0)</span>
+              </div>
+            </div>
+            <div id="statusMessage" class="status-alert"></div>
+          </section>
+
+          <section class="panel legend-panel">
+            <h3>Map Key</h3>
+            <ul class="legend-list">
+              <li><span class="swatch safe"></span> Proven Safe</li>
+              <li><span class="swatch unknown"></span> Unmapped</li>
+              <li><span class="swatch hazard"></span> Known Hazard</li>
+              <li><span class="swatch agent"></span> Agent Location</li>
+            </ul>
+          </section>
+        </aside>
+
+        <section class="panel grid-panel">
+          <div class="grid-header">
+            <h3>World Map</h3>
+            <span class="hint-text">Click adjacent nodes to attempt a safe move.</span>
+          </div>
+          <div id="grid" class="grid-container"></div>
+        </section>
+      </div>
+    </main>
+
+    <script src="/static/app.js"></script>
+  </body>
+</html>
